@@ -1,0 +1,217 @@
+.input-form-1{
+	font-family: Arial, Helvetica, sans-serif; 
+	width: 500px;
+	padding: 30px 30px 5px 30px;
+	background: #FFFFFF;
+	margin: 50px auto;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);	
+}
+
+.input-form-1 h2{
+	background: #01DFD7;
+	text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
+	color: white;
+	font-size: 18px;
+	font-weight: 100;
+	padding: 20px;
+	margin: -30px -30px 30px -30px;
+}
+
+.input-form-1 input[type="text"],
+.input-form-1 input[type="date"],
+.input-form-1 input[type="datatime"],
+.input-form-1 input[type="email"],
+.input-form-1 input[type="number"],
+.input-form-1 input[type="search"],
+.input-form-1 input[type="time"],
+.input-form-1 input[type="url"],
+.input-form-1 input[type="password"],
+.input-form-1 textarea,
+.input-form-1 select
+{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	outline: none;
+	dispaly: block;
+	width: 100%;
+	padding: 15px;
+	border: none;
+	border-bottom: 1px solid #ddd;
+	background: transparent;
+	margin-bottom: 10px;
+	font: 16px Arial, Helvetica, sans-serif;
+	height: 4px;
+}
+
+.input-form-1 textarea{
+	resize: none;
+	overflow: hidden;
+}
+
+.input-form-1 input[type="button"],
+.input-form-1 input[type="submit"] {
+	box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	-moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	background-color: #2CBBBB;
+	border: 1px solid #27A0A0;
+	display: inline-block;
+	cursor: pointer;
+	color: #FFFFFF;
+	font: 14px Arial, Helvetica, sans-serif;
+	padding: 8px 18px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.input-form-1 input[type="button"]:hover,
+.input-form-1 input[type="submit"]:hover {
+	background: linear-gradient (to bottom, #34CACA 5%, #30C9C9 100%);
+	background-color: #34CACA;
+}
+
+.message-board-1{
+	font-family: Arial, Helvetica, sans-serif; 
+	width: 60%;
+	border-collapse: separate;
+    border-spacing: 0 0px;
+	background: #FFFFFF;
+	margin: auto;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);	
+}
+
+.message-board-1 tr{
+	height: 40px;
+}
+
+.message-board-1 td{
+	box-shadow: 0px 0px 1px;
+	-moz-box-shadow: 0px 0px 1px;
+	-webkit-box-shadow: 0px 0px 1px;
+}
+
+.message-board-1 td:hover{
+	border: 1.5px solid #00bfff;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+}
+
+.message-board-1 td:hover .deletebtn1{
+	display: block;
+}
+
+.input-form-new-post{
+	font-family: Arial, Helvetica, sans-serif; 
+	width: 60%;
+	background: #FFFFFF;
+	margin: 50px auto;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+}
+
+.input-form-new-post textarea{
+	width: 100%;
+}
+
+.input-form-new-post input[type="submit"]{
+	width: 100%;
+	box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	-moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	background-color: #2E2E2E;
+	border: 1px solid white;
+	display: inline-block;
+	cursor: pointer;
+	color: #FFFFFF;
+	font: 14px Arial, Helvetica, sans-serif;
+	padding: 8px 18px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.input-form-new-post input[type="submit"]:hover {
+	background: linear-gradient (to bottom, #34CACA 5%, #30C9C9 100%);
+	background-color: #34CACA;
+}
+
+.toolbar tr, td{
+	color: white;
+	font: 20px Arial, Helvetica, sans-serif;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.dropdown:hover .dropdownbtn {
+    background-color: #2CBBBB;
+}
+
+.dropdownbtn {
+    background-color: #34CACA;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.toolbarbtn {
+    background-color: #34CACA;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.toolbarbtn:hover {
+    background-color: #2CBBBB;
+}
+
+.deletebtn1 {
+	display: none;
+}
+
+.deletebtn2 {
+	display: none;
+}
+
+.deletebtn1:hover {
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+}
+
+
