@@ -11,6 +11,7 @@ function do_html_header($title)
     <style>
 	  <?php
 		include('baseStyle.css'); 
+		include('bgStyle.css');
 	  ?>
       body { font-family: Arial, Helvetica, sans-serif; font-size: 13px }
       hr { color: #3333cc; width=300; text-align=left}
@@ -257,7 +258,8 @@ function do_html_header1($title)
     <title><?php echo $title;?></title>
     <style>
 	  <?php
-		include('baseStyle.css'); 
+		include('baseStyle.css');
+		include('bgStyle.css');	
 	  ?>
       body { font-family: Arial, Helvetica, sans-serif; font-size: 13px; background-color: #2E2E2E; }
       hr { color: #3333cc; width=300; text-align=left}
@@ -412,5 +414,14 @@ function redirect_to_home()
         If you are not redirected automatically, follow the <a href='index.php'>link to example</a>
   </body>
 <?php
+}
+?>
+
+<?php
+
+function showPortrait($path) {
+	
+	echo '<img src="'.$path.'" style="width:100px;height:100px;"/>';
+
 }
 ?>

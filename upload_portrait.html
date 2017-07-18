@@ -1,0 +1,166 @@
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="/imgareaselect/css/imgareaselect-default.css" />	
+	<link href="/uploadifive/uploadifive.css" type="text/css" rel="stylesheet" />
+	
+	<script type="text/javascript" src="/js/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="/imgareaselect/scripts/jquery.imgareaselect.pack.js"></script>
+	<script type="text/javascript" src="/uploadifive/jquery.uploadifive.min.js"></script>
+	
+		<script type="text/javascript">
+		$(function() {
+			document.getElementById("content").style.visibility = "hidden";
+		});
+		
+		
+		$(function() {
+			$('#pic_upload').uploadifive({
+				'auto'             : false,
+				'checkScript'      : '/check-exists.php',
+				'queueID'          : 'queue',
+				'uploadScript'     : '/processUpload.php',
+				'formData'         : {'username' : <?php echo "'".$_SESSION['valid_user']."'" ?>},
+				'onUploadComplete' : function(file, response, data) {
+					json_str = JSON.parse(response);
+					var maxSize = 400;
+					var width = json_str.width;
+					var height = json_str.height;
+					var scale = json_str.scale;
+					if(json_str.code == 0) {
+						//$('#uploadInfo').html(json_str.message+'<br>Upload Speed: '+data.speed.toFixed(2) + 'Kb/s');
+						//scaling image
+						if(json_str.width > maxSize || json_str.height > maxSize) {
+							if(json_str.width > json_str.height) {
+								width = maxSize;
+								height = maxSize/json_str.width*json_str.height;
+								json_str.scale = maxSize/json_str.width;
+							} else {
+								height = maxSize;
+								width = maxSize/json_str.height*json_str.width;
+								json_str.scale = maxSize/json_str.height;
+							}
+							
+						}
+						
+						$('#oriImage').append('<img src="/'+json_str.path+'" width="'+width+'" height="'+height+'" />');
+						//display preview image
+						$('#preview').empty().append('<img src="/' + json_str.path + '" width="' + width + '" height="' + height + '" />').css({
+							overflow: 'hidden',
+							width: '150px',
+							height: '150px'
+						});
+						document.getElementById("content").style.visibility = "visible";
+					} else {
+						$('#uploadInfo').html('Error Code[' + json_str.code + ']:<p>' + json_str.message + '</p>');
+					}
+				},
+			});
+		
+		
+			//crop select
+			$('#initCrop').click(function(e){
+				ias=$('#oriImage img').imgAreaSelect({instance: true});
+				ias.setOptions({ aspectRatio: '1:1', handle:true,
+								 hide:false,
+								 onSelectChange:preview2,
+								 onSelectEnd:function(img, selection) {
+									json_str.x1 = selection.x1;
+									json_str.y1 = selection.y1;
+									json_str.cropWidth = selection.x2-selection.x1;
+									json_str.cropHeight = selection.y2-selection.y1;
+									},
+									});
+			});
+			
+			$('#crop').click(function(e){
+				if(!(typeof json_str == 'undefine')) {
+					jsondata='data=' + JSON.stringify(json_str);
+					alert(jsondata);
+					$.ajax({
+						type:"POST",
+						url:"crop.php",
+						data:jsondata,
+						success:function(msg){
+							alert(msg);
+							$('#cropResult').html('<img src="' + msg + '"/>');
+						}
+					});
+				} else {
+					alert('Please upload an image');
+				}
+				
+				return false;
+			});
+		
+		});
+		
+		function preview2(img, selection) {
+			realWidth = json_str.width*json_str.scale;
+			realHeight = json_str.height*json_str.scale;
+			sizeWidth = 150;
+			sizeHeight = 150;
+			var scaleX = sizeWidth/selection.width;
+			var scaleY = sizeHeight/selection.height;
+			
+			$('#preview img').css({
+				width: Math.round(scaleX*realWidth) + 'px',
+				height: Math.round(scaleY*realHeight) + 'px',
+				marginLeft: - Math.round(scaleX*selection.x1) + 'px',
+				marginTop: - Math.round(scaleY*selection.y1) + 'px'});
+		};
+		
+		
+		</script>
+	
+	<title>Upload Portrait</title>
+</head>
+
+<body>
+<form>
+	<fieldset class="floatbox">
+	<legend>Upload Portrait</legend>
+	<div id="queue"></div>	
+	<input type="file" name="pic_upload" id="pic_upload"/><br>
+	<a class="selectbtnBlue" style="text-decoration: none" id='uploadLink' href="javascript:$('#pic_upload').uploadifive('upload');">Upload Photo</a>
+	<br><br>
+	<div id="uploadInfo"></div>
+	
+	</fieldset>
+	
+</form>
+
+<div id="colLayout">
+<div id="content">
+
+<div>
+	<fieldset>
+	<div>
+	<span  id='oriImage' class="img_v"></span>
+	<span id="preview" style="position:absolute; margin-left:10%; margin-top:7.5%"></span>
+	</div>
+	</fieldset>
+	<table>
+	<tr>
+	<td><button class="selectbtnGrey" id="initCrop">Reposition</button></td>
+	<td>
+		<button class="selectbtnBlue" type="submit" name="submit" id="crop" >Crop & Save</button> 
+	</td>
+	</tr>	
+	</table>
+</div>
+
+<div>
+	<div id="cropResult" class="cbb">
+	
+	</div>
+</div>
+</div>
+
+<div id="sideContent">
+	<div >
+	
+	</div>
+
+</div>
+</div>
+</body>

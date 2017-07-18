@@ -1,5 +1,5 @@
 <?php
-	require_once(dirname(__FILE__).'/../src/core/coreUser_fns.php');
+	require_once('coreUser_fns.php');
 	session_start();
 	
 	if(isset($_POST['username'])) {
@@ -31,6 +31,15 @@
 	}
 
 	check_valid_user();
+	
+	$userPrivilege = get_user_privilege($_SESSION['valid_user'], 'msgboard');
+	if (!isset($userPrivilege) || $userPrivilege <= 4) {
+		do_html_header('Problem:');
+		echo 'You do not have permission to post.<br>';
+		do_html_url('index.php', 'Back');
+		do_html_footer();
+		exit;
+	}
 
 
 	include ('coreMsgBoard_fns.php');
