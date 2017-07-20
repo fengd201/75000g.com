@@ -411,7 +411,7 @@ function redirect_to_home()
 	<meta http-equiv="refresh" content="1;url=index.php">
   </head>
   <body>
-        If you are not redirected automatically, follow the <a href='index.php'>link to example</a>
+        If you are not redirected automatically, follow the <a href='index.php'>link</a>
   </body>
 <?php
 }
