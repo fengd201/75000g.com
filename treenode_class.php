@@ -120,7 +120,7 @@ class treenode {
 			if (isset($_SESSION['valid_user'])) {
 				if ($this->m_poster == $_SESSION['valid_user'] || "75000g" == $_SESSION['valid_user']) {
 					echo "<a href=\"index.php?delete=".$this->m_postid."\">
-						<img class=\"deletebtn1\" src=\"sign_delete_icon.png\" align=\"right\" height=\"100%\" width=\"3%\" alt=\"Collapse Thread\" border=\"0\" /><img class=\"deletebtn2\" src=\"sign_delete_icon2.png\" align=\"right\" height=\"100%\" width=\"3%\" alt=\"Collapse Thread\" border=\"0\" /></a></td></tr>";
+						<img class=\"deletebtn1\" src=\"sign_delete_icon.png\" align=\"right\" height=\"30px\" width=\"3%\" alt=\"Collapse Thread\" border=\"0\" /><img class=\"deletebtn2\" src=\"sign_delete_icon2.png\" align=\"right\" height=\"100%\" width=\"3%\" alt=\"Collapse Thread\" border=\"0\" /></a></td></tr>";
 				}
 			}
 			
